@@ -1,50 +1,112 @@
-# ResearchLog — 개인 연구 프로젝트 기록 관리 도구
+# ResearchLog
 
-> 진행 중인 연구 프로젝트를 만들고, 대시보드에서 연구 과정과 다음 할 일을 계속 업데이트할 수 있는 개인 연구 관리 웹 서비스입니다.
+**Live Demo:** https://researchlog-next.vercel.app/
 
----
-
-## 1. 문제 정의 & 타깃 사용자
-
-대학생이나 개인 연구자는 여러 연구 프로젝트를 동시에 진행하면서 프로젝트명, 연구 요약, 다음 할 일, 관련 논문 메모를 따로 관리하는 경우가 많습니다. 이 경우 연구 진행 상황이 흩어지고, 어떤 연구가 예정 상태인지, 진행 중인지, 완료되었는지 한눈에 보기 어렵습니다.
-
-ResearchLog는 개인 연구자가 브라우저 안에서 프로젝트별 연구 기록을 만들고, 대시보드와 과거 기록 화면에서 연구 진행 상황을 확인할 수 있도록 만든 경량 웹 서비스입니다.
+ResearchLog is a personal research project management web service. It helps users create research projects, track progress, manage next actions, and organize related paper notes in one browser-based workspace.
 
 ---
 
-## 2. 핵심 기능
+## Project Overview
 
-| 기능 | 설명 |
-|---|---|
-| 이름/이메일 기반 계정 시작 | 사용자가 입력한 이름 또는 이메일을 기준으로 브라우저 안에 개인 연구 공간을 생성합니다. |
-| 연구 프로젝트 생성 | 시작일, 프로젝트명, 연구 요약, 다음 할 일을 입력해 새 연구 프로젝트를 저장합니다. |
-| 대시보드 | 전체 프로젝트 수, 완료, 진행 중, 예정 상태를 요약해서 보여줍니다. |
-| 과거 연구 기록 | 저장된 연구 프로젝트를 목록으로 확인하고 검색할 수 있습니다. |
-| 상태 필터 | 예정, 진행 중, 완료 상태별로 연구 프로젝트를 필터링합니다. |
-| 프로젝트 상세 보기 | 프로젝트별 연구 내용, 다음 할 일, 관련 논문 메모를 확인하고 관리할 수 있습니다. |
-| 샘플 데이터 | 기능을 빠르게 확인할 수 있도록 상세 샘플 데이터를 불러올 수 있습니다. |
-| 로컬 저장 | 데이터는 브라우저 localStorage에 저장됩니다. 별도의 서버나 데이터베이스 없이 실행됩니다. |
+Research work is often spread across separate notes, paper lists, task records, and project files. This makes it difficult to understand which research projects are currently active, what needs to be done next, and how previous work is connected.
+
+ResearchLog organizes research activity around individual projects. Each project can include a start date, project name, research summary, next actions, progress status, and related paper notes.
 
 ---
 
-## 3. 기술 스택
+## Main Features
 
-- Next.js
-- TypeScript
-- CSS
-- JavaScript
-- localStorage
+| Feature               | Description                                                                          |
+| --------------------- | ------------------------------------------------------------------------------------ |
+| Account entry         | Users enter a name or email to create a local personal workspace.                    |
+| Project creation      | Users can create a project with a start date, title, summary, and next actions.      |
+| Dashboard             | Shows the number of total, completed, in-progress, and planned projects.             |
+| Research history      | Displays saved projects with search and status filtering.                            |
+| Project detail view   | Provides a detailed view of each project, including summary, todos, and paper notes. |
+| Todo management       | Users can add next actions, due dates, and completion states.                        |
+| Paper note connection | Users can connect paper notes to related research projects.                          |
+| Sample data           | Users can load sample research data to test the service quickly.                     |
+| Local storage         | User data is saved in the browser using localStorage.                                |
 
 ---
 
-## 4. 로컬 실행 방법
+## Tech Stack
+
+* Next.js
+* TypeScript
+* JavaScript
+* CSS
+* localStorage
+
+---
+
+## Project Structure
+
+```text
+researchlog-next/
+├─ app/
+│  ├─ layout.tsx       # Root layout, metadata, global CSS, and script loading
+│  ├─ page.tsx         # Main page structure
+│  └─ globals.css      # Global styling and page visibility rules
+├─ public/
+│  └─ script.js        # Client-side logic for routing, storage, rendering, and events
+├─ README.md
+├─ AI_USAGE.md
+├─ analysis.md
+├─ package.json
+└─ .gitignore
+```
+
+---
+
+## Screen Overview
+
+| Screen           | Role                                                              |
+| ---------------- | ----------------------------------------------------------------- |
+| Home             | Introduces the service and provides the account entry form.       |
+| Dashboard        | Shows project statistics and project summary cards.               |
+| Research History | Displays saved research projects with search and filter controls. |
+| Project Detail   | Shows detailed information for a selected project.                |
+| New Project      | Provides a form for creating a new research project.              |
+
+---
+
+## How to Run Locally
 
 ```bash
-# 1) 의존성 설치
 npm install
-
-# 2) 개발 서버 실행
 npm run dev
+```
 
-# 3) 브라우저에서 접속
+Then open:
+
+```text
 http://localhost:3000
+```
+
+---
+
+## Data Storage
+
+ResearchLog uses browser localStorage instead of a backend database. The current user, research projects, todos, and paper notes are stored locally in the browser.
+
+Because of this, the app can run without a server, but saved data is limited to the same browser and device.
+
+---
+
+## Current Limitations
+
+* Data is not synchronized across devices.
+* There is no real authentication system.
+* The current version uses browser localStorage only.
+* Collaboration features are not included.
+
+---
+
+## Future Improvements
+
+* Add cloud storage using Firebase or Supabase.
+* Add real authentication.
+* Add calendar-based due date visualization.
+* Add data export and import features.
+* Improve paper note search and project linking.
