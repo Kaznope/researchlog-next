@@ -1,65 +1,287 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+    <>
+      <header className="site-header">
+        <nav className="nav">
+          <a className="brand" href="#home" aria-label="ResearchLog 홈">
+            <span className="brand-mark" aria-hidden="true">
+              <span className="brand-book"></span>
+              <span className="brand-line"></span>
+            </span>
+            <span className="brand-name">ResearchLog</span>
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <button
+            className="nav-toggle"
+            type="button"
+            aria-label="메뉴 열기"
+            aria-expanded="false"
           >
-            Documentation
-          </a>
-        </div>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div className="nav-links">
+            <a href="#home" data-public-link>
+              홈
+            </a>
+            <a href="#dashboard" data-auth-link>
+              대시보드
+            </a>
+            <a href="#history" data-auth-link>
+              과거 연구 기록
+            </a>
+            <a href="#log-new" data-auth-link>
+              새 프로젝트
+            </a>
+            <button id="logoutButton" className="nav-logout" type="button" hidden>
+              로그아웃
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section id="home" className="page hero-page active-page" data-page="home">
+          <div className="hero-layout">
+            <div className="hero-content clean-hero">
+              <p className="eyebrow">개인 연구 관리 워크스페이스</p>
+              <h1 className="hero-title">
+                <span>Research</span>
+                <span>Log</span>
+              </h1>
+              <p className="hero-copy">
+                진행 중인 연구 프로젝트를 만들고, 대시보드에서 연구 과정과
+                다음 할 일을 계속 업데이트하는 기록 도구입니다.
+              </p>
+
+              <div className="home-summary">
+                <div>
+                  <strong>프로젝트 중심</strong>
+                  <span>
+                    새 연구는 프로젝트로 만들고 이후 진행 상황을 누적합니다.
+                  </span>
+                </div>
+                <div>
+                  <strong>스케줄 관리</strong>
+                  <span>다음 할 일을 항목별 due date와 함께 정리합니다.</span>
+                </div>
+                <div>
+                  <strong>논문 연결</strong>
+                  <span>읽은 논문을 프로젝트에 연결해 근거를 남깁니다.</span>
+                </div>
+              </div>
+            </div>
+
+            <form id="accountForm" className="account-card">
+              <div>
+                <p className="panel-kicker">내 계정으로 시작</p>
+                <h2>이름 또는 이메일 입력</h2>
+                <p>입력한 값으로 브라우저 안에 개인 연구 공간이 만들어집니다.</p>
+              </div>
+
+              <label>
+                이름 또는 이메일
+                <input
+                  id="accountInput"
+                  type="text"
+                  placeholder="예: 김연구 또는 research@example.com"
+                  autoComplete="username"
+                  required
+                />
+              </label>
+
+              <p
+                id="accountValidationMessage"
+                className="validation-message"
+                role="alert"
+              ></p>
+
+              <button className="button primary full-width" type="submit">
+                내 계정으로 들어가기
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <section id="dashboard" className="page" data-page="dashboard">
+          <div className="page-heading">
+            <div>
+              <p className="eyebrow">대시보드</p>
+              <h2>
+                <span id="dashboardUserName">내</span> 연구 프로젝트
+              </h2>
+            </div>
+            <a className="button primary" href="#log-new">
+              새 프로젝트 만들기
+            </a>
+          </div>
+
+          <div className="stats-grid">
+            <article className="stat-card">
+              <span>전체 프로젝트</span>
+              <strong id="totalLogs">0</strong>
+            </article>
+            <article className="stat-card stat-completed">
+              <span>완료</span>
+              <strong id="completedLogs">0</strong>
+            </article>
+            <article className="stat-card stat-progress">
+              <span>진행 중</span>
+              <strong id="inProgressLogs">0</strong>
+            </article>
+            <article className="stat-card stat-planned">
+              <span>예정</span>
+              <strong id="plannedLogs">0</strong>
+            </article>
+          </div>
+
+          <section className="panel dashboard-editor-panel">
+            <div className="list-heading">
+              <h3>프로젝트 요약</h3>
+              <span>클릭해서 상세 보기</span>
+            </div>
+            <div
+              id="dashboardProjectList"
+              className="dashboard-project-list"
+              aria-live="polite"
+            ></div>
+          </section>
+
+          <div className="data-actions" aria-label="데이터 관리">
+            <button id="loadSampleData" className="button secondary" type="button">
+              상세 샘플 데이터 불러오기
+            </button>
+            <button id="clearAllData" className="button danger" type="button">
+              현재 계정 데이터 삭제
+            </button>
+          </div>
+        </section>
+
+        <section id="history" className="page" data-page="history">
+          <div className="page-heading">
+            <div>
+              <p className="eyebrow">과거 연구 기록</p>
+              <h2>프로젝트별 연구 진행 내용</h2>
+            </div>
+            <a className="button primary" href="#log-new">
+              새 프로젝트 만들기
+            </a>
+          </div>
+
+          <div className="filters">
+            <label className="search-field">
+              프로젝트 검색
+              <input
+                id="logSearch"
+                type="search"
+                placeholder="프로젝트명, 연구 내용, 다음 할 일 검색"
+              />
+            </label>
+
+            <label>
+              상태
+              <select id="statusFilter">
+                <option value="All">전체</option>
+                <option value="Planned">예정</option>
+                <option value="In Progress">진행 중</option>
+                <option value="Completed">완료</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="logList" className="history-list" aria-live="polite"></div>
+        </section>
+
+        <section id="log-detail" className="page" data-page="log-detail">
+          <div className="page-heading">
+            <div>
+              <p className="eyebrow">연구 기록 상세</p>
+              <h2 id="detailTitle">연구 기록</h2>
+            </div>
+            <a className="button secondary" href="#history">
+              목록으로 돌아가기
+            </a>
+          </div>
+
+          <article id="logDetailContent" className="detail-panel"></article>
+        </section>
+
+        <section id="log-new" className="page" data-page="log-new">
+          <div className="page-heading">
+            <div>
+              <p className="eyebrow">새 프로젝트</p>
+              <h2>새 연구 프로젝트 만들기</h2>
+            </div>
+            <a className="button secondary" href="#dashboard">
+              대시보드로 돌아가기
+            </a>
+          </div>
+
+          <form id="projectForm" className="form-card standalone-project-form">
+            <div>
+              <p className="panel-kicker">프로젝트 생성</p>
+            </div>
+
+            <div className="form-row two-columns">
+              <label>
+                시작일
+                <input id="logDate" type="date" required />
+              </label>
+
+              <label>
+                프로젝트명
+                <input
+                  id="projectName"
+                  type="text"
+                  placeholder="예: 검색 증강 생성 평가 연구"
+                  required
+                />
+              </label>
+            </div>
+
+            <label>
+              현재 진행 중인 연구
+              <textarea
+                id="summary"
+                rows={6}
+                placeholder="무슨 연구를 진행 중인지, 목표와 현재 진행 상황을 적어주세요."
+                required
+              ></textarea>
+            </label>
+
+            <div className="todo-editor-block">
+              <div className="list-heading">
+                <h3>다음 할 일</h3>
+                <button
+                  id="addProjectTodoButton"
+                  className="button secondary small-button"
+                  type="button"
+                >
+                  할 일 추가
+                </button>
+              </div>
+
+              <div id="projectTodoInputs" className="todo-input-list"></div>
+            </div>
+
+            <p
+              id="logValidationMessage"
+              className="validation-message"
+              role="alert"
+            ></p>
+
+            <button className="button primary full-width" type="submit">
+              새 프로젝트 저장
+            </button>
+          </form>
+        </section>
       </main>
-    </div>
+
+      <footer>
+        <p>ResearchLog - 프로젝트별 학술 연구 기록 관리 도구</p>
+      </footer>
+    </>
   );
 }

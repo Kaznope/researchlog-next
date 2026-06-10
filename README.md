@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ResearchLog — 개인 연구 프로젝트 기록 관리 도구
 
-## Getting Started
+> 진행 중인 연구 프로젝트를 만들고, 대시보드에서 연구 과정과 다음 할 일을 계속 업데이트할 수 있는 개인 연구 관리 웹 서비스입니다.
 
-First, run the development server:
+---
+
+## 1. 문제 정의 & 타깃 사용자
+
+대학생이나 개인 연구자는 여러 연구 프로젝트를 동시에 진행하면서 프로젝트명, 연구 요약, 다음 할 일, 관련 논문 메모를 따로 관리하는 경우가 많습니다. 이 경우 연구 진행 상황이 흩어지고, 어떤 연구가 예정 상태인지, 진행 중인지, 완료되었는지 한눈에 보기 어렵습니다.
+
+ResearchLog는 개인 연구자가 브라우저 안에서 프로젝트별 연구 기록을 만들고, 대시보드와 과거 기록 화면에서 연구 진행 상황을 확인할 수 있도록 만든 경량 웹 서비스입니다.
+
+---
+
+## 2. 핵심 기능
+
+| 기능 | 설명 |
+|---|---|
+| 이름/이메일 기반 계정 시작 | 사용자가 입력한 이름 또는 이메일을 기준으로 브라우저 안에 개인 연구 공간을 생성합니다. |
+| 연구 프로젝트 생성 | 시작일, 프로젝트명, 연구 요약, 다음 할 일을 입력해 새 연구 프로젝트를 저장합니다. |
+| 대시보드 | 전체 프로젝트 수, 완료, 진행 중, 예정 상태를 요약해서 보여줍니다. |
+| 과거 연구 기록 | 저장된 연구 프로젝트를 목록으로 확인하고 검색할 수 있습니다. |
+| 상태 필터 | 예정, 진행 중, 완료 상태별로 연구 프로젝트를 필터링합니다. |
+| 프로젝트 상세 보기 | 프로젝트별 연구 내용, 다음 할 일, 관련 논문 메모를 확인하고 관리할 수 있습니다. |
+| 샘플 데이터 | 기능을 빠르게 확인할 수 있도록 상세 샘플 데이터를 불러올 수 있습니다. |
+| 로컬 저장 | 데이터는 브라우저 localStorage에 저장됩니다. 별도의 서버나 데이터베이스 없이 실행됩니다. |
+
+---
+
+## 3. 기술 스택
+
+- Next.js
+- TypeScript
+- CSS
+- JavaScript
+- localStorage
+
+---
+
+## 4. 로컬 실행 방법
 
 ```bash
+# 1) 의존성 설치
+npm install
+
+# 2) 개발 서버 실행
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 3) 브라우저에서 접속
+http://localhost:3000
