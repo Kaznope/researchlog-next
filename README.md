@@ -56,7 +56,20 @@ researchlog-next/
 ├─ package.json
 └─ .gitignore
 ```
+## Assignment Requirement Coverage
 
+This project was developed for Assignment 4: PRD Document & AI-Assisted Web Service Implementation.
+
+The website satisfies the main implementation requirements as follows:
+
+| Requirement                      | Implementation                                                                                                     |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| At least three pages or sections | Home, Dashboard, Research History, Project Detail, and New Project sections are included.                          |
+| Clear navigation structure       | Users can move between the main service sections through the navigation menu and buttons.                          |
+| HTML and CSS layout/styling      | The website uses structured page layout and custom CSS styling.                                                    |
+| JavaScript interaction           | Users can create research projects, add todos, filter project history, open project details, and load sample data. |
+| Consistency with service idea    | All features are designed around research project management and paper note organization.                          |
+| Vercel deployment                | The final website is deployed using Vercel.                                                                        |
 ---
 
 ## Screen Overview
@@ -184,3 +197,11 @@ Because of this, the app can run without a server, but saved data is limited to 
 * Add calendar-based due date visualization.
 * Add data export and import features.
 * Improve paper note search and project linking.
+
+
+## AI-Assisted Development
+
+This project was developed with the help of AI programming tools. AI was used to support idea organization, PRD refinement, code structure planning, UI improvement, debugging, and documentation.
+
+The AI-assisted development process is documented separately in `AI_USAGE.md`.
+This file includes representative prompts, the purpose of each prompt, the results, and the parts that were modified or improved after reviewing the AI-generated output.
