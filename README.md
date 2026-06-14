@@ -73,18 +73,92 @@ researchlog-next/
 
 ## How to Run Locally
 
+This section explains how another user can download and run this project on their own computer.
+
+### 1. Requirements
+
+Before running this project, make sure the following program is installed:
+
+* Node.js
+
+You can check whether Node.js is installed by running the following command in the terminal:
+
 ```bash
-npm install
-npm run dev
+node -v
 ```
 
-Then open:
+You can also check npm with:
 
-```text
-http://localhost:3000
+```bash
+npm -v
+```
+
+If Node.js is not installed, install the LTS version of Node.js first.
+
+---
+
+### 2. Clone the Repository
+
+Open a terminal and run the following command:
+
+```bash
+git clone https://github.com/Kaznope/researchlog-next.git
+```
+
+Then move into the project folder:
+
+```bash
+cd researchlog-next
 ```
 
 ---
+
+### 3. Install Dependencies
+
+Install the required packages with:
+
+```bash
+npm install
+```
+
+This command installs all dependencies listed in `package.json`.
+
+---
+
+### 4. Run the Development Server
+
+Start the local development server:
+
+```bash
+npm run dev
+```
+
+After the server starts, open the following address in your browser:
+
+```bash
+http://localhost:3000
+```
+
+The ResearchLog website should now run locally on your computer.
+
+---
+
+### 5. Local Data Storage
+
+This project uses browser local storage to save user data.
+
+Because of this, saved project data is stored only in the user's own browser and device.
+Data created on one computer will not automatically appear on another computer.
+
+---
+
+### 6. Deployment URL
+
+The deployed version of this project is available at:
+
+```text
+https://researchlog-next.vercel.app/
+```
 
 ## Data Storage
 
